@@ -45,18 +45,18 @@ python mysite.py
 
 * **Используемые технологии**
 
-## Технологии:
+## Используемые технологии
 
-[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/en/latest/)
-[![Flask-FlatPages](https://img.shields.io/badge/Flask--FlatPages-lightgrey?style=for-the-badge)](https://flask-flatpages.readthedocs.io/en/latest/)
-[![Frozen-Flask](https://img.shields.io/badge/Frozen--Flask-lightgrey?style=for-the-badge)](https://pythonhosted.org/Frozen-Flask/)
-[![Jinja2](https://img.shields.io/badge/jinja2-%23000.svg?style=for-the-badge&logo=jinja2&logoColor=white)](https://jinja.palletsprojects.com/en/latest/)
-[![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)](https://daringfireball.net/projects/markdown/)
-[![Pygments](https://img.shields.io/badge/pygments-lightgrey?style=for-the-badge)](https://pygments.org/)
-[![PyYAML](https://img.shields.io/badge/PyYAML-lightgrey?style=for-the-badge)](https://pyyaml.org/en/stable/)
-[![Click](https://img.shields.io/badge/click-lightgrey?style=for-the-badge)](https://click.palletsprojects.com/en/latest/)
-[![Werkzeug](https://img.shields.io/badge/werkzeug-lightgrey?style=for-the-badge)](https://werkzeug.palletsprojects.com/en/latest/)
+[![Python](https://img.shields.io/badge/Python-3.9-blue)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-1.1.1-blue)](https://flask.palletsprojects.com/en/1.1.x/)
+[![Flask-FlatPages](https://img.shields.io/badge/Flask--FlatPages-0.7.1-blue)](https://flask-flatpages.readthedocs.io/en/latest/)
+[![Frozen-Flask](https://img.shields.io/badge/Frozen--Flask-0.15-blue)](https://pythonhosted.org/Frozen-Flask/)
+[![Jinja2](https://img.shields.io/badge/Jinja2-2.10.3-blue)](https://jinja.palletsprojects.com/en/2.10.x/)
+[![Markdown](https://img.shields.io/badge/Markdown-3.1.1-blue)](https://python-markdown.github.io/reference/)
+[![Pygments](https://img.shields.io/badge/Pygments-2.4.2-blue)](https://pygments.org/)
+[![PyYAML](https://img.shields.io/badge/PyYAML-5.1.2-blue)](https://pyyaml.org/en/stable/)
+[![Click](https://img.shields.io/badge/Click-7.0-blue)](https://click.palletsprojects.com/en/7.x/)
+[![Werkzeug](https://img.shields.io/badge/Werkzeug-0.16.0-blue)](https://werkzeug.palletsprojects.com/en/0.16.x/)
 * **Лицензия:**  Информация о лицензии проекта.
 
 Этот проект распространяется под лицензией [MIT](LICENSE).
