@@ -1,0 +1,17 @@
+{"site_url":"http://localhost:8000",
+"site_title": "Садиков Алексей Анатольевич: Адвокатский кабинет",
+"description": "Адвокат Садиков Алексей Анатольевич",
+"keywords": "Веб-разработка на Python, бэкенд на Django и Flask",
+"name": "Садиков Алексей Анатольевич",
+"tag1":"Адвокатский кабинет",
+"tag2":"",
+"sect1":"Главная",
+"sect2":"Садиков А.А.",
+"sect3":"Бочков Я.И.",
+"sect4":"Блог",
+"sect5":"Контакты",
+"telegram":"https://t.me/advocate34S",
+"facebook":"ttps://facebook.com/john.doe",
+"vk":"https://vk.com/persiflage",
+"email":"mailto:advocate34@mail.ru"
+}
