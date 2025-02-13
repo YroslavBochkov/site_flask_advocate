@@ -45,17 +45,18 @@ python mysite.py
 
 * **Используемые технологии**
 
-* [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
-* [![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/en/2.3.x/)
-* [![Flask-FlatPages](https://img.shields.io/badge/Flask--FlatPages-lightgrey?style=for-the-badge)](https://flask-flatpages.readthedocs.io/en/latest/)
-* [![Frozen-Flask](https://img.shields.io/badge/Frozen--Flask-lightgrey?style=for-the-badge)](https://pythonhosted.org/Frozen-Flask/)
-* [![Jinja2](https://img.shields.io/badge/jinja2-%23000.svg?style=for-the-badge&logo=jinja2&logoColor=white)](https://jinja.palletsprojects.com/en/3.1.x/)
-* [![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)](https://daringfireball.net/projects/markdown/)
-* [![Pygments](https://img.shields.io/badge/pygments-lightgrey?style=for-the-badge)](https://pygments.org/)
-* [![YAML](https://img.shields.io/badge/yaml-%23000000.svg?style=for-the-badge&logo=yaml&logoColor=white)](https://yaml.org/)
-* [![Click](https://img.shields.io/badge/click-lightgrey?style=for-the-badge)](https://click.palletsprojects.com/en/8.1.x/)
-* [![Werkzeug](https://img.shields.io/badge/werkzeug-lightgrey?style=for-the-badge)](https://werkzeug.palletsprojects.com/en/2.3.x/)
-
+<p align="left">
+  &nbsp;&nbsp;[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+  &nbsp;&nbsp;[![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/en/latest/)
+  &nbsp;&nbsp;[![Flask-FlatPages](https://img.shields.io/badge/Flask--FlatPages-lightgrey?style=for-the-badge)](https://flask-flatpages.readthedocs.io/en/latest/)
+  &nbsp;&nbsp;[![Frozen-Flask](https://img.shields.io/badge/Frozen--Flask-lightgrey?style=for-the-badge)](https://pythonhosted.org/Frozen-Flask/)
+  &nbsp;&nbsp;[![Jinja2](https://img.shields.io/badge/jinja2-%23000.svg?style=for-the-badge&logo=jinja2&logoColor=white)](https://jinja.palletsprojects.com/en/latest/)<br>
+  &nbsp;&nbsp;[![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)](https://daringfireball.net/projects/markdown/)
+  &nbsp;&nbsp;[![Pygments](https://img.shields.io/badge/pygments-lightgrey?style=for-the-badge)](https://pygments.org/)
+  &nbsp;&nbsp;[![PyYAML](https://img.shields.io/badge/PyYAML-lightgrey?style=for-the-badge)](https://pyyaml.org/en/stable/)
+  &nbsp;&nbsp;[![Click](https://img.shields.io/badge/click-lightgrey?style=for-the-badge)](https://click.palletsprojects.com/en/latest/)
+  &nbsp;&nbsp;[![Werkzeug](https://img.shields.io/badge/werkzeug-lightgrey?style=for-the-badge)](https://werkzeug.palletsprojects.com/en/latest/)
+</p>
 * **Лицензия:**  Информация о лицензии проекта.
 
 Этот проект распространяется под лицензией [MIT](LICENSE).
