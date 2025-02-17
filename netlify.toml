@@ -1,1 +1,4 @@
-python-3.9
+[build]
+  python_version = "3.9"
+  command = "python mysite.py build"
+  publish = "build"
