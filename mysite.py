@@ -14,7 +14,7 @@ freezer = Freezer(app)
 app.config.from_object(__name__)
 
 @freezer.register_generator
-@app.route("/")
+@app.route('/')
 def index():
     with open('settings.txt', encoding='utf8') as config:
         data = config.read()
