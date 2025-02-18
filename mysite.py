@@ -23,14 +23,12 @@ def index():
 
 @app.route('/pygments.css')
 def pygments_css():
-    return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}    
-@app.route('/resume2')
-def resume2():
-    return render_template('resume2.html')
+    return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
