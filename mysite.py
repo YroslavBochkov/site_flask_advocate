@@ -13,9 +13,9 @@ flatpages = FlatPages(app)
 freezer = Freezer(app)
 app.config.from_object(__name__)
 
+@freezer.register_generator
 @app.route("/")
 def index():
-    
     with open('settings.txt', encoding='utf8') as config:
         data = config.read()
         settings = json.loads(data)
