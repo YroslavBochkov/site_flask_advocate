@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   "use strict";
 
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   const on = (type, el, listener, all = false) => {
     let selectEl = select(el, all)
-
     if (selectEl) {
       if (all) {
         selectEl.forEach(e => e.addEventListener(type, listener))
@@ -49,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
+   * Scroll with offset on links with a class name .scrollto
    */
   on('click', '#navbar .nav-link', function(e) {
     let section = select(this.hash)
@@ -135,10 +133,10 @@ document.addEventListener('DOMContentLoaded', function() {
   /**
    * Skills animation
    */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
+  let skillsContent = select('.skills-content');
+  if (skillsContent) {
     new Waypoint({
-      element: skilsContent,
+      element: skillsContent,
       offset: '80%',
       handler: function(direction) {
         let progress = select('.progress .progress-bar', true);
@@ -179,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   /**
-   * Porfolio isotope and filter
+   * Portfolio isotope and filter
    */
   window.addEventListener('load', () => {
     let portfolioContainer = select('.portfolio-container');
@@ -239,4 +237,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-})()
+});
+
