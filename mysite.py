@@ -44,7 +44,7 @@ def post(name):
 def card(name):
     path = '{}/{}'.format(PORT_DIR, name)
     card = flatpages.get_or_404(path)
-    return render_template('card.html', card=card)    
+    return render_template('card.html', card=card)
 
 
 @app.route('/pygments.css')

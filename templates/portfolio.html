@@ -1,36 +1,23 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section id="portfolio" class="about">
+ {% block portfolio %}
+ <!-- ======= Портфолио ======= -->
+  <section id="portfolio" class="services">
     <div class="container">
-        <div class="section-title">
-            <h2>Бочков Ярослав Игоревич</h2>
-            <p>О сотруднике</p>
+      <div class="section-title">
+        <h2>Партнеры</h2>
+      </div>
+    <div class="row">
+       {% block content %}
+       {% for card in cards %} <!-- вывод карточек -->
+         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="{{ card.icon }}"></i></div>
+            <h4><a href="{{ url_for('card', name=card.path.replace('portfolio/', '')) }}"data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox">{{ card.title }}</a></h4>
+            <p>{{ card.description }}</p>
+          </div>
         </div>
-        <p>Имеет высшее юридическое образование по специальности "Юриспруденция".</p>
-        <div class="row">
-            <div class="col-lg-4" data-aos="fade-right">
-                <img src="static/img/bochkov.jpg" class="img-fluid" alt="Фото Бочкова Я.И.">
-            </div>
-            <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                <h3>Оказываю юридическую помощь</h3>
-                <dl>
-                    <dt>Судебное представительство:</dt>
-                    <dd><i class="bi bi-chevron-right"></i> По гражданским делам</dd>
-                    <dd><i class="bi bi-chevron-right"></i> По делам об административных правонарушениях</dd>
-                    <dd><i class="bi bi-chevron-right"></i> В рамках административного судопроизводства</dd>
-                    <dd><i class="bi bi-chevron-right"></i> В арбитражных судах</dd>
-                    <dt>Другие услуги:</dt>
-                    <dd><i class="bi bi-chevron-right"></i> Подготовка процессуальных документов</dd>
-                    <dd><i class="bi bi-chevron-right"></i> Консультирование по правовым вопросам</dd>
-                    <dd><i class="bi bi-chevron-right"></i> Подготовка договоров и сопровождение сделок</dd>
-                    <dd><i class="bi bi-chevron-right"></i> Абонентское обслуживание</dd>
-                </dl>
-                <p>
-                    Устные и письменные консультации по правовым вопросам
-                </p>
-            </div>
-        </div>
+      {% endfor %}
+      {% endblock %}
     </div>
-</section>
-{% endblock %}    
+   </div>
+  </section><!-- конец портфолио -->
+{% endblock %}
