@@ -1,4 +1,4 @@
-{"site_url":"advocate34.ru",
+{"site_url":"/",
 "site_title": "Садиков Алексей Анатольевич: Адвокатский кабинет",
 "description": "Адвокат Садиков Алексей Анатольевич",
 "keywords": "Веб-разработка на Python, бэкенд на Django и Flask",
