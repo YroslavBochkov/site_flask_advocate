@@ -1,3 +1,4 @@
+order: 1
 title: Управляющий партнер
 description: Бочков Ярослав Игоревич
 category: юрист

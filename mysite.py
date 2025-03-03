@@ -15,12 +15,20 @@ freezer = Freezer(app)
 app.config.from_object(__name__)
 
 
+def get_cards(flatpages, port_dir):
+    cards = []
+    for card in flatpages:
+        if card.path.startswith(port_dir + '/'):  # Проверяем начало пути с учетом '/'
+            order = card.meta.get('order', float('inf'))
+            cards.append((order, card))
+    cards.sort(key=lambda x: x[0])
+    return [card for _, card in cards]
+
 @app.route("/")
 def index():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
     posts.sort(key=lambda item: item['date'], reverse=True)
-    cards = [p for p in flatpages if p.path.startswith(PORT_DIR)]
-    cards.sort(key=lambda item: item['title'])    
+    cards = get_cards(flatpages, PORT_DIR)   
     with open('settings.txt', encoding='utf8') as config:
         data = config.read()
         settings = json.loads(data)

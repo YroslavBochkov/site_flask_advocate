@@ -5,10 +5,10 @@
       <div class="section-title">
         <h2>Партнеры</h2>
       </div>
-    <div class="row">
+    <div class="row d-flex flex-wrap align-items-stretch">
        {% block content %}
        {% for card in cards %} <!-- вывод карточек -->
-         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+         <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
           <div class="icon-box">
             <div class="icon"><i class="{{ card.icon }}"></i></div>
             <h4><a href="{{ url_for('card', name=card.path.replace('portfolio/', '')) }}"data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox">{{ card.title }}</a></h4>
