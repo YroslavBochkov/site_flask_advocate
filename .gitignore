@@ -7,3 +7,6 @@ __pycache__/
 .env
 venv/
 .idea/
+.venv/
+.venv
+pyvenv.cfg
