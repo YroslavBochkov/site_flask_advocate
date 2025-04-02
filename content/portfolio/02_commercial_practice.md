@@ -2,7 +2,7 @@ order: 2
 title: Партнер
 description: Бочкова Нина Сергеевна
 category: юрист коммерческого права
-icon: bx bx-money
+icon: bx bxs-pen
 info: Комплексное юридическое сопровождение бизнеса.
 link:
 
