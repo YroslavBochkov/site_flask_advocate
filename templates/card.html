@@ -15,9 +15,9 @@ body::before {
           <div class="col-lg-8 portfolio-info">
             <h3>{{ card.dеscription }}</h3>
             <ul>
-              <li><strong>Категория</strong>: {{ card.category.title() }}</li>
+              <li><strong>Категория</strong>: {{ card.category.capitalize() }}</li>
               <li><strong>Будем знакомы</strong>: {{ card.description }}</li>
-              <li><strong>Примечания</strong>:{{ card.info }}</li>
+              <li><strong>Примечания</strong>: {{ card.info }}</li>
             </ul>
             <p>
               {{ card.html|safe }}
