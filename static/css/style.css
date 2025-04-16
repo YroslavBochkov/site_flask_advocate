@@ -213,14 +213,19 @@ h1, h2, h3, h4, h5, h6 {
 */
 .mobile-nav-toggle {
   color: #fff;
-  font-size: 28px;
+  font-size: 32px;
   cursor: pointer;
   display: none;
   line-height: 0;
+  transition: transform 0.3s ease;
   transition: 0.5s;
   position: fixed;
   right: 15px;
   top: 15px;
+}
+
+.mobile-nav-toggle:active {
+  transform: rotate(90deg) scale(0.9); /* Scale down on click */
 }
 
 @media (max-width: 991px) {
