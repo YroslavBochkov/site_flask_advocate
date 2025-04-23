@@ -17,6 +17,7 @@
   <script src="https://kit.fontawesome.com/69e2443572.js" crossorigin="anonymous"></script>
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+      {% include "metrika.html" %}
 </head>
 <body>
   <main id="main">
@@ -31,5 +32,6 @@
   <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% include "metrika.html" %}
 </body>
 </html>
