@@ -21,17 +21,28 @@
 </head>
 <body>
   <main id="main">
-{% block content %} <!-- вложенные шаблоны -->
-{% endblock %}
-  </main>
-  <!-- Скрипты -->
-  <script src="{{ url_for('static', filename='assets/purecounter/purecounter.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    {% include "metrika.html" %}
-</body>
-</html>
+    {% block content %} <!-- вложенные шаблоны -->
+    {% endblock %}
+      </main>
+    
+      <!-- Чат-бот -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+      <div id="law-chatbot">
+        <div id="chatbot-window">
+          <div id="chatbot-messages"></div>
+          <div id="chatbot-buttons"></div>
+        </div>
+        <button id="chatbot-toggle">💬</button>
+      </div>
+      <!-- Скрипты -->
+      <script src="{{ url_for('static', filename='assets/purecounter/purecounter.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/glightbox/js/glightbox.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/isotope-layout/isotope.pkgd.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+        {% include "metrika.html" %}
+    </body>
+    </html>

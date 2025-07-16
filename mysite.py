@@ -1,5 +1,5 @@
 import sys, json
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -57,7 +57,14 @@ def card(name):
 
 @app.route('/pygments.css')
 def pygments_css():
-    return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}    
+    return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}
+
+
+@app.route('/chatbot_scenario')
+def chatbot_scenario():
+    with open('static/data/chatbot_texts.json', encoding='utf8') as f:
+        data = json.load(f)
+    return jsonify(data)
 
 
 @app.errorhandler(404)
