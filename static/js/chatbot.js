@@ -13,54 +13,79 @@ function renderChatbotStep(stepIdx) {
   if (step.calendar) {
     messages.innerHTML = `<div style="margin-bottom:8px;">${step.text}</div>`;
     buttons.innerHTML = '';
-    const input = document.createElement('input');
-    input.type = 'datetime-local';
-    input.autocomplete = 'off';
-    input.style = "width: 90%; margin-top:8px; padding:6px; border-radius:4px; border:1px solid #ccc;";
 
-    // Ограничения: только рабочие дни и время с 10:00 до 16:00
+    // Создаём селекторы для даты и времени
+    const dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.autocomplete = 'off';
+    dateInput.style = "width: 90%; margin-top:8px; padding:6px; border-radius:4px; border:1px solid #ccc;";
+
+    const timeInput = document.createElement('select');
+    timeInput.style = "width: 90%; margin-top:8px; padding:6px; border-radius:4px; border:1px solid #ccc;";
+
+    // Ограничения: только рабочие дни (Пн-Пт) и ближайшие 30 дней
     const now = new Date();
-    let minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0);
+    let minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     if (now.getHours() >= 16) {
       minDate.setDate(minDate.getDate() + 1);
     }
     let maxDate = new Date(minDate);
     maxDate.setDate(maxDate.getDate() + 30);
-    maxDate.setHours(16, 0, 0, 0);
 
-    function toDatetimeLocal(dt) {
-      return dt.toISOString().slice(0,16);
+    function toDateInputValue(dt) {
+      const pad = n => n < 10 ? '0' + n : n;
+      return dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
     }
-    input.min = toDatetimeLocal(minDate);
-    input.max = toDatetimeLocal(maxDate);
+    dateInput.min = toDateInputValue(minDate);
+    dateInput.max = toDateInputValue(maxDate);
 
-    input.addEventListener('change', function() {
-      if (!input.value) return;
-      const dt = new Date(input.value);
+    // Оставляем только рабочие дни (Пн-Пт)
+    dateInput.addEventListener('input', function() {
+      const dt = new Date(dateInput.value);
       const day = dt.getDay();
-      const hour = dt.getHours();
       if (day === 0 || day === 6) {
-        alert('Пожалуйста, выберите рабочий день (Пн-Пт).');
-        input.value = '';
+        dateInput.setCustomValidity('Выберите рабочий день (Пн-Пт)');
+        dateInput.reportValidity();
+        dateInput.value = '';
+        timeInput.innerHTML = '';
         return;
+      } else {
+        dateInput.setCustomValidity('');
       }
-      if (hour < 10 || hour >= 16) {
-        alert('Пожалуйста, выберите время с 10:00 до 16:00.');
-        input.value = '';
-        return;
+      // Заполняем время только если выбран рабочий день
+      timeInput.innerHTML = '';
+      for (let hour = 10; hour < 16; hour++) {
+        ['00', '30'].forEach(min => {
+          const option = document.createElement('option');
+          option.value = `${hour.toString().padStart(2, '0')}:${min}`;
+          option.textContent = `${hour}:${min}`;
+          timeInput.appendChild(option);
+        });
       }
     });
 
-    buttons.appendChild(input);
+    // Блокируем возможность выбора выходных дней в календаре
+    dateInput.addEventListener('keydown', function(e) {
+      e.preventDefault();
+    });
+
+    // При открытии сразу показываем только рабочие дни
+    dateInput.onfocus = function() {
+      this.showPicker && this.showPicker();
+    };
+
+    buttons.appendChild(dateInput);
+    buttons.appendChild(timeInput);
+
     const sendBtn = document.createElement('button');
     sendBtn.textContent = 'Далее';
     sendBtn.style = "margin: 8px 0 0 0; display:block;";
     sendBtn.onclick = () => {
-      if (!input.value) {
+      if (!dateInput.value || !timeInput.value) {
         alert('Пожалуйста, выберите дату и время.');
         return;
       }
-      const dt = new Date(input.value);
+      const dt = new Date(`${dateInput.value}T${timeInput.value}`);
       const day = dt.getDay();
       const hour = dt.getHours();
       if (day === 0 || day === 6) {
@@ -71,7 +96,8 @@ function renderChatbotStep(stepIdx) {
         alert('Пожалуйста, выберите время с 10:00 до 16:00.');
         return;
       }
-      chatbotForm['datetime'] = input.value;
+      // Формируем строку для datetime-local
+      chatbotForm['datetime'] = `${dateInput.value}T${timeInput.value}`;
       renderChatbotStep(stepIdx + 1);
       chatbotState = stepIdx + 1;
     };
