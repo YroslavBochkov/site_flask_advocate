@@ -23,26 +23,51 @@
   <main id="main">
     {% block content %} <!-- вложенные шаблоны -->
     {% endblock %}
-      </main>
-    
-      <!-- Чат-бот -->
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
-      <div id="law-chatbot">
-        <div id="chatbot-window">
-          <div id="chatbot-messages"></div>
-          <div id="chatbot-buttons"></div>
-        </div>
-        <button id="chatbot-toggle">💬</button>
+  </main>
+
+  <!-- Согласие на обработку персональных данных и политика -->
+  <footer style="background:rgba(0,0,0,0.85); color:#aaa; font-size:13px; padding:18px 0 8px 0; text-align:center;">
+    <div style="max-width:900px; margin:0 auto;">
+      <span>
+        Отправляя заявку, вы соглашаетесь с <a href="#" onclick="document.getElementById('privacy-modal').style.display='block';return false;" style="color:#1e90ff;text-decoration:underline;">политикой обработки персональных данных</a>.
+      </span>
+    </div>
+  </footer>
+  <div id="privacy-modal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85);">
+    <div style="background:#222; color:#fff; max-width:600px; margin:40px auto; padding:32px 24px 24px 24px; border-radius:12px; position:relative;">
+      <button onclick="document.getElementById('privacy-modal').style.display='none';" style="position:absolute; right:18px; top:12px; background:none; border:none; color:#fff; font-size:22px; cursor:pointer;">×</button>
+      <h3 style="color:#1e90ff; margin-bottom:16px;">Политика обработки персональных данных</h3>
+      <div style="font-size:15px; color:#eee; text-align:left; max-height:60vh; overflow-y:auto;">
+        <p>
+          1. Оставляя заявку на сайте, вы даёте согласие на обработку своих персональных данных (имя, e-mail, телефон, дата консультации) для целей записи на консультацию, обратной связи и предоставления юридических услуг.<br>
+          2. Ваши данные не передаются третьим лицам без вашего согласия, используются только для связи с вами и не хранятся дольше, чем это необходимо.<br>
+          3. Оператор персональных данных: адвокатский кабинет Садикова А.А., контакты указаны на сайте.<br>
+          4. Вы вправе отозвать согласие, направив запрос на электронную почту advocate34@mail.ru.<br>
+          5. Безопасность хранения данных обеспечивается техническими и организационными мерами.<br>
+          6. Подробнее о ваших правах — в Федеральном законе РФ №152-ФЗ "О персональных данных".
+        </p>
       </div>
-      <!-- Скрипты -->
-      <script src="{{ url_for('static', filename='assets/purecounter/purecounter.js') }}"></script>
-      <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='assets/glightbox/js/glightbox.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='assets/isotope-layout/isotope.pkgd.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
-        {% include "metrika.html" %}
-    </body>
-    </html>
+    </div>
+  </div>
+
+  <!-- Чат-бот -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+  <div id="law-chatbot">
+    <div id="chatbot-window">
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-buttons"></div>
+    </div>
+    <button id="chatbot-toggle">💬</button>
+  </div>
+  <!-- Скрипты -->
+  <script src="{{ url_for('static', filename='assets/purecounter/purecounter.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    {% include "metrika.html" %}
+</body>
+</html>
