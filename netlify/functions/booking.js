@@ -5,7 +5,25 @@ exports.handler = async function(event, context) {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
-  const data = JSON.parse(event.body);
+
+  // ТЕСТОВЫЕ ДАННЫЕ для отладки Telegram (раскомментируйте для теста)
+  // const data = {
+  //   name: "Тестовый клиент",
+  //   email: "test@example.com",
+  //   phone: "+79991234567",
+  //   datetime: "2024-07-25T14:00"
+  // };
+
+  // Для реального использования:
+  let data;
+  try {
+    data = JSON.parse(event.body);
+  } catch (e) {
+    return { statusCode: 400, body: "Некорректный JSON." };
+  }
+
+  // Если хотите всегда тестировать — раскомментируйте строку ниже:
+  // data = { name: "Тестовый клиент", email: "test@example.com", phone: "+79991234567", datetime: "2024-07-25T14:00" };
 
   // 1. Валидация обязательных полей
   if (
@@ -54,6 +72,9 @@ E-mail: ${data.email || "-"}
 Телефон: ${data.phone || "-"}
 Дата и время: ${data.datetime || "-"}
 Проверьте оплату и свяжитесь с клиентом для подтверждения и отправки ссылки на Zoom.`;
+
+  // Логируем для отладки
+  console.log("Booking function called, отправляем в Telegram:", text);
 
   // Отправляем в Telegram
   await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {

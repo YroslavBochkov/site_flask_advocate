@@ -10,3 +10,6 @@ venv/
 .venv/
 .venv
 pyvenv.cfg
+
+# Local Netlify folder
+.netlify
