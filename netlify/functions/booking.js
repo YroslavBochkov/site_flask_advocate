@@ -66,6 +66,7 @@ exports.handler = async function(event, context) {
   // Формируем текст для Telegram
   const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  const SECOND_TELEGRAM_CHAT_ID = process.env.SECOND_TELEGRAM_CHAT_ID; // второй chat_id из .env
   const text = `📝 Новая заявка на онлайн-консультацию:
 Имя: ${data.name || "-"}
 E-mail: ${data.email || "-"}
@@ -76,12 +77,19 @@ E-mail: ${data.email || "-"}
   // Логируем для отладки
   console.log("Booking function called, отправляем в Telegram:", text);
 
-  // Отправляем в Telegram
-  await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(text)}`
-  });
+  // Отправляем в Telegram двум получателям
+  const sendToTelegram = async (chatId) => {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `chat_id=${chatId}&text=${encodeURIComponent(text)}`
+    });
+  };
+
+  await sendToTelegram(TELEGRAM_CHAT_ID);
+  if (SECOND_TELEGRAM_CHAT_ID) {
+    await sendToTelegram(SECOND_TELEGRAM_CHAT_ID);
+  }
 
   return {
     statusCode: 200,
