@@ -2,8 +2,25 @@ const RATE_LIMIT_SECONDS = 60; // 1 заявка в минуту с одного
 let lastRequests = {};
 
 exports.handler = async function(event, context) {
+  // CORS preflight
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      },
+      body: ""
+    };
+  }
+
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return {
+      statusCode: 405,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Method Not Allowed"
+    };
   }
 
   // ТЕСТОВЫЕ ДАННЫЕ для отладки Telegram (раскомментируйте для теста)
@@ -19,7 +36,11 @@ exports.handler = async function(event, context) {
   try {
     data = JSON.parse(event.body);
   } catch (e) {
-    return { statusCode: 400, body: "Некорректный JSON." };
+    return {
+      statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Некорректный JSON."
+    };
   }
 
   // Если хотите всегда тестировать — раскомментируйте строку ниже:
@@ -32,26 +53,42 @@ exports.handler = async function(event, context) {
     !data.phone ||
     !data.datetime
   ) {
-    return { statusCode: 400, body: "Все поля обязательны для заполнения." };
+    return {
+      statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Все поля обязательны для заполнения."
+    };
   }
 
   // 2. Валидация email
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(data.email)) {
-    return { statusCode: 400, body: "Некорректный e-mail." };
+    return {
+      statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Некорректный e-mail."
+    };
   }
 
   // 3. Валидация телефона (только +7 и 10 цифр)
   const digits = data.phone.replace(/\D/g, "");
   if (!(data.phone.startsWith("+7") && digits.length === 11)) {
-    return { statusCode: 400, body: "Некорректный телефон." };
+    return {
+      statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Некорректный телефон."
+    };
   }
 
   // 4. Антифлуд: ограничение по IP (rate limit)
   const ip = event.headers["x-forwarded-for"] || event.headers["client-ip"] || "unknown";
   const now = Date.now() / 1000;
   if (lastRequests[ip] && now - lastRequests[ip] < RATE_LIMIT_SECONDS) {
-    return { statusCode: 429, body: "Слишком часто. Попробуйте позже." };
+    return {
+      statusCode: 429,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Слишком часто. Попробуйте позже."
+    };
   }
   lastRequests[ip] = now;
 
@@ -60,7 +97,11 @@ exports.handler = async function(event, context) {
     /https?:|<script|<\/|onerror|onload|<img|<a/i.test(val)
   );
   if (suspicious) {
-    return { statusCode: 400, body: "Подозрительный ввод." };
+    return {
+      statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: "Подозрительный ввод."
+    };
   }
 
   // Формируем текст для Telegram
@@ -93,6 +134,7 @@ E-mail: ${data.email || "-"}
 
   return {
     statusCode: 200,
+    headers: { "Access-Control-Allow-Origin": "*" },
     body: JSON.stringify({ status: "ok" })
   };
 };
