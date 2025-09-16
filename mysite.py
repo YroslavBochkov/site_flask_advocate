@@ -3,7 +3,7 @@ from flask import Flask, render_template, jsonify
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
-DEBUG = True
+DEBUG = False
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
-        app.run(host='127.0.0.1', port=8000, debug=True)
+        app.run(host='127.0.0.1', port=8000, debug=DEBUG)
