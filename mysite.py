@@ -67,6 +67,18 @@ def chatbot_scenario():
     return jsonify(data)
 
 
+@app.route('/yandex_838574ef7acc7bcc.html')
+def yandex_verification():
+    return '''
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>Verification: 838574ef7acc7bcc</body>
+</html>
+''', 200, {'Content-Type': 'text/html; charset=UTF-8'}
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
