@@ -18,6 +18,25 @@
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
       {% include "metrika.html" %}
+  <!-- Микроразметка BreadcrumbList для навигационной цепочки -->
+  {% if breadcrumb_items %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {% for item in breadcrumb_items %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "name": "{{ item.name }}",
+        "item": "{{ item.url }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
   <main id="main">
