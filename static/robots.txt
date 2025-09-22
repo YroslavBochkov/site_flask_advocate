@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://advocate34.ru/sitemap.xml

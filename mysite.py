@@ -67,17 +67,60 @@ def chatbot_scenario():
     return jsonify(data)
 
 
-@app.route('/yandex_838574ef7acc7bcc.html')
-def yandex_verification():
-    return '''
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>Verification: 838574ef7acc7bcc</body>
-</html>
-''', 200, {'Content-Type': 'text/html; charset=UTF-8'}
+@app.route('/robots.txt')
+def robots_txt():
+    return (
+        "User-agent: *\n"
+        "Disallow:\n"
+        "Sitemap: https://advocate34.ru/sitemap.xml\n",
+        200,
+        {'Content-Type': 'text/plain'}
+    )
 
+@app.route('/sitemap.xml')
+def sitemap():
+    from flask import Response, url_for
+    import datetime
+
+    # Главная страница
+    urls = [
+        {
+            "loc": url_for('index', _external=True),
+            "changefreq": "weekly",
+            "priority": "1.0"
+        }
+    ]
+
+    # Посты
+    posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
+    for post in posts:
+        urls.append({
+            "loc": url_for('post', name=post.path.replace(POST_DIR + '/', ''), _external=True),
+            "changefreq": "monthly",
+            "priority": "0.7"
+        })
+
+    # Карточки портфолио
+    cards = get_cards(flatpages, PORT_DIR)
+    for card in cards:
+        urls.append({
+            "loc": url_for('card', name=card.path.replace(PORT_DIR + '/', ''), _external=True),
+            "changefreq": "monthly",
+            "priority": "0.8"
+        })
+
+    # Можно добавить другие важные страницы вручную, если нужно
+
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url in urls:
+        xml.append("  <url>")
+        xml.append(f"    <loc>{url['loc']}</loc>")
+        xml.append(f"    <changefreq>{url['changefreq']}</changefreq>")
+        xml.append(f"    <priority>{url['priority']}</priority>")
+        xml.append("  </url>")
+    xml.append('</urlset>')
+    return Response('\n'.join(xml), mimetype='application/xml')
 
 @app.errorhandler(404)
 def page_not_found(e):
