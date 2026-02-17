@@ -55,6 +55,23 @@ def card(name):
     return render_template('card.html', card=card)
 
 
+@app.route('/calculator/alimony/')
+def calculator_alimony():
+    """
+    Калькулятор алиментов и неустойки по алиментам.
+    Пока без сложной математики: считаем по базовым правилам.
+    """
+    # breadcrumbs для микроразметки, если нужно
+    breadcrumb_items = [
+        {"name": "Главная", "url": "https://advocate34.ru/"},
+        {"name": "Калькулятор алиментов и неустойки", "url": "https://advocate34.ru/calculator/alimony/"}
+    ]
+    return render_template(
+        'calculator_alimony.html',
+        breadcrumb_items=breadcrumb_items
+    )
+
+
 @app.route('/pygments.css')
 def pygments_css():
     return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}

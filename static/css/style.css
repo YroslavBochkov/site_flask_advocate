@@ -782,6 +782,10 @@ section .container {
   bottom: 0;
   overflow-y: auto;
 }
+.calc-portfolio-details {
+  background: rgba(0, 0, 0, 0.55);
+}
+
 .portfolio-details .container {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -840,6 +844,67 @@ img {
   img {
     width: 100%; /* Задаем ширину изображения на 100% для мобильных устройств */
   }
+}
+/* ===== Калькулятор алиментов ===== */
+.calc-page body::before {
+  background: #040404 url("../img/portfolio/post.jpg") top right no-repeat;
+  background-size: cover;
+}
+.calc-container {
+  padding-top: 40px;
+}
+.calc-card {
+  background: rgba(0,0,0,0.9);
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.calc-tabs button {
+  margin-right: 8px;
+}
+
+/* Кнопки калькулятора в системных цветах */
+.calc-btn-main {
+  background: #1e90ff;
+  border-color: #1e90ff;
+  color: #fff;
+}
+.calc-btn-main:hover {
+  background: #1b7cd8;
+  border-color: #1b7cd8;
+  color: #fff;
+}
+
+.calc-btn-outline {
+  background: transparent;
+  border-color: #1e90ff;
+  color: #1e90ff;
+}
+.calc-btn-outline:hover {
+  background: #1e90ff;
+  color: #fff;
+}
+
+/* Кнопки контактов под стиль сайта */
+.calc-contact-btn {
+  background: #1e90ff;
+  border-color: #1e90ff;
+  color: #fff;
+}
+.calc-contact-btn:hover {
+  background: #1b7cd8;
+  border-color: #1b7cd8;
+  color: #fff;
+}
+.calc-contact-btn-alt {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.calc-contact-btn-alt:hover {
+  background: #1e90ff;
+  border-color: #1e90ff;
+  color: #fff;
 }
 /*--------------------------------------------------------------
 # Contact

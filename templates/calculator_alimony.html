@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Калькулятор алиментов и неустойки по алиментам{% endblock %}
+{% block description %}Онлайн калькулятор алиментов и неустойки по алиментам. Поможет быстро оценить размер алиментов и сумму неустойки. При необходимости можете сразу обратиться к адвокату за помощью.{% endblock %}
+
+{% block content %}
+<style>
+body::before {
+  background: #040404 url("{{ url_for('static', filename='img/bg.jpg') }}");
+}
+</style>
+
+<div id="portfolio-details" class="portfolio-details calc-portfolio-details">
+  <div class="container calc-container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2 class="portfolio-title">Калькулятор алиментов и неустойки по алиментам</h2>
+        <p>
+          Этот простой калькулятор поможет предварительно оценить:
+          <br>— размер алиментов при взыскании в долях от дохода;
+          <br>— примерную сумму неустойки по алиментам.
+        </p>
+        <p class="calc-note">
+          Расчёт носит ориентировочный характер и не заменяет консультацию адвоката.
+          Фактические суммы могут отличаться в зависимости от конкретной ситуации и практики суда.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="calc-card">
+          <div class="calc-tabs mb-3">
+            <button class="btn btn-sm calc-btn-main" id="tab-alimony-btn">Алименты</button>
+            <button class="btn btn-sm calc-btn-outline" id="tab-penalty-btn">Неустойка по алиментам</button>
+          </div>
+
+          <!-- Блок "Алименты" -->
+          <div id="tab-alimony">
+            <h4>Калькулятор алиментов (доля от дохода)</h4>
+
+            <div class="form-group" style="margin-top:10px;">
+              <label class="calc-label" for="income">Среднемесячный доход плательщика (руб.):</label>
+              <input
+                type="number"
+                id="income"
+                class="calc-input"
+                min="0"
+                step="100"
+                placeholder="Например, 60000"
+              >
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+              <label class="calc-label" for="children_count">Количество детей:</label>
+              <select id="children_count" class="calc-input">
+                <option value="1">1 ребёнок (1/4 дохода)</option>
+                <option value="2">2 ребёнка (1/3 дохода)</option>
+                <option value="3">3 и более (1/2 дохода)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-top:12px;">
+              <button class="btn btn-sm calc-btn-main" onclick="calcAlimony()">
+                Рассчитать алименты
+              </button>
+            </div>
+
+            <div class="calc-result" id="alimony_result" style="display:none;"></div>
+
+            <p class="calc-note" style="margin-top: 8px;">
+              В расчёте используются стандартные доли по ст. 81 СК РФ:
+              1/4 на одного ребёнка, 1/3 — на двух, 1/2 — на трёх и более детей.
+              Суд может отойти от этих долей, учитывая обстоятельства дела.
+            </p>
+          </div>
+
+          <!-- Блок "Неустойка" -->
+          <div id="tab-penalty" style="display:none;">
+            <h4>Калькулятор неустойки по алиментам</h4>
+
+            <div class="form-group" style="margin-top:10px;">
+              <label class="calc-label" for="monthly_alimony">Размер ежемесячных алиментов (руб.):</label>
+              <input
+                type="number"
+                id="monthly_alimony"
+                class="calc-input"
+                min="0"
+                step="100"
+                placeholder="Например, 15000"
+              >
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+              <label class="calc-label" for="delay_days">Количество дней просрочки:</label>
+              <input
+                type="number"
+                id="delay_days"
+                class="calc-input"
+                min="0"
+                step="1"
+                placeholder="Например, 90"
+              >
+            </div>
+
+            <div class="form-group" style="margin-top:12px;">
+              <button class="btn btn-sm calc-btn-main" onclick="calcPenalty()">
+                Рассчитать неустойку
+              </button>
+            </div>
+
+            <div class="calc-result" id="penalty_result" style="display:none;"></div>
+
+            <p class="calc-note" style="margin-top: 8px;">
+              Неустойка рассчитывается исходя из 0,1% от суммы задолженности за каждый день просрочки
+              (п. 2 ст. 115 СК РФ), если иное не установлено соглашением об уплате алиментов или судебным актом.
+              Для точного расчёта задолженности обычно требуется выписка судебного пристава.
+            </p>
+          </div>
+        </div>
+
+        <!-- Блок призыва к действию -->
+        <div class="calc-card">
+          <h4>Нужна помощь адвоката по алиментам?</h4>
+          <p>Если вы хотите:</p>
+          <ul>
+            <li>взыскать алименты или изменить их размер;</li>
+            <li>правильно рассчитать задолженность и неустойку;</li>
+            <li>подготовить исковое заявление и представлять ваши интересы в суде,</li>
+          </ul>
+          <p>вы можете связаться со мной удобным для вас способом:</p>
+          <p style="margin: 8px 0 16px 0;">
+            <a href="{{ url_for('index') }}#contact" class="btn btn-sm calc-contact-btn">
+              Контакты
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/calculator_alimony.js') }}"></script>
+{% endblock %}
+{% endblock %}
