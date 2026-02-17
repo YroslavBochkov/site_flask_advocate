@@ -159,7 +159,7 @@
       { "label": "Связаться по телефону", "url": "tel:+79178345017" },
       { "label": "WhatsApp", "url": "https://wa.me/79177207612" },
       { "label": "Telegram", "url": "https://t.me/advocate34S" },
-      { "label": "Нет, спасибо", "next": 45 }
+      { "label": "Нет, спасибо", "next": null }
     ]
   },
   {
