@@ -46,13 +46,27 @@
   </main>
 
   <!-- Согласие на обработку персональных данных, политика и публичная оферта -->
-  <footer style="background:rgba(0,0,0,0.85); color:#aaa; font-size:13px; padding:18px 0 8px 0; text-align:center;">
-    <div style="max-width:900px; margin:0 auto;">
-      <span>
-        Отправляя заявку, вы соглашаетесь с
-        <a href="#" onclick="document.getElementById('privacy-modal').style.display='block';return false;" style="color:#1e90ff;text-decoration:underline;">политикой обработки персональных данных</a>
-        и <a href="#" onclick="document.getElementById('offer-modal').style.display='block';return false;" style="color:#1e90ff;text-decoration:underline;">публичной офертой</a>.
-      </span>
+  <footer style="background:rgba(0,0,0,0.85); color:#aaa; font-size:13px; padding:12px 0; text-align:center;">
+    <div style="max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <!-- Бейдж Яндекс.Бизнес "Хорошее место 2026" слева в футере -->
+      <div style="flex:0 0 auto; text-align:left;">
+        <iframe
+          src="https://yandex.ru/sprav/widget/rating-badge/152391441977?type=award&theme=dark"
+          width="150"
+          height="50"
+          frameborder="0"
+          style="border-radius:4px; overflow:hidden;"
+        ></iframe>
+      </div>
+
+      <!-- Текст про политику и оферту -->
+      <div style="flex:1 1 auto; text-align:right;">
+        <span>
+          Отправляя заявку, вы соглашаетесь с
+          <a href="#" onclick="document.getElementById('privacy-modal').style.display='block';return false;" style="color:#1e90ff;text-decoration:underline;">политикой обработки персональных данных</a>
+          и <a href="#" onclick="document.getElementById('offer-modal').style.display='block';return false;" style="color:#1e90ff;text-decoration:underline;">публичной офертой</a>.
+        </span>
+      </div>
     </div>
   </footer>
   <div id="privacy-modal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85);">
