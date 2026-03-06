@@ -58,14 +58,6 @@ def card(name):
     return render_template('card.html', card=card_obj)
 
 
-@app.route("/vcard-page")
-def vcard_page():
-    """
-    Страница для перехода по QR: кнопка скачивания .vcf и короткая инструкция.
-    """
-    return render_template("vcard.html")
-
-
 @app.route('/calculator/alimony/')
 def calculator_alimony():
     """

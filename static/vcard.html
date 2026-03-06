@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Визитка адвоката — сохранить контакт</title>
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+  <meta name="description" content="Сохраните контакт адвокатского кабинета в адресную книгу: телефоны, адрес, e-mail, сайт.">
+  <meta content="адвокат Волгоград, юрист Волжский, адвокат Волгоградская область, адвокат по всей России, юридическая помощь, онлайн консультация, услуги адвоката по уголовным делам, семейные споры, военные дела, налоговые споры, арбитраж, защита интересов" name="keywords">
+  <link href="/static/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="/static/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/assets/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/assets/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/69e2443572.js" crossorigin="anonymous"></script>
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/pygments.css">
+  <!-- Метрика можно не копировать, но если хочешь — вставь сюда такой же блок, как в base.html -->
+</head>
+<body>
+  <main id="main">
+
+    <style>
+    body::before {
+      background: #040404 url("/static/img/bg.jpg");
+    }
+    </style>
+
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="portfolio-title">Визитка адвокатского кабинета</h2>
+            <div class="calc-card">
+              <h4>Сохранить контакт</h4>
+
+              <p id="vcard-instruction">
+                Выберите вашу платформу и скачайте визитку, чтобы добавить контакт в телефон.
+              </p>
+
+              <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+                <!-- Кнопка для iPhone (iOS) -->
+                <a href="/static/advocate34.vcf"
+                   class="btn btn-sm calc-contact-btn"
+                   id="ios-btn">
+                  Скачать для iPhone (iOS)
+                </a>
+
+                <!-- Кнопка для Android -->
+                <a href="/static/advocate34.vcf"
+                   class="btn btn-sm calc-contact-btn-alt"
+                   id="android-btn">
+                  Скачать для Android
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function() {
+      var ua = window.navigator.userAgent || '';
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+
+      var p = document.getElementById('vcard-instruction');
+      var iosBtn = document.getElementById('ios-btn');
+      var androidBtn = document.getElementById('android-btn');
+      if (!p || !iosBtn || !androidBtn) return;
+
+      if (isIOS) {
+        p.textContent =
+          'Нажмите «Скачать для iPhone (iOS)», затем в Safari откройте значок загрузки и файл advocate34.vcf — iPhone предложит создать контакт.';
+        iosBtn.classList.remove('calc-contact-btn-alt');
+        iosBtn.classList.add('calc-contact-btn');
+        androidBtn.classList.remove('calc-contact-btn');
+        androidBtn.classList.add('calc-contact-btn-alt');
+      } else if (isAndroid) {
+        p.textContent =
+          'Нажмите «Скачать для Android» — после загрузки телефон обычно предложит сразу добавить контакт.';
+        androidBtn.classList.remove('calc-contact-btn-alt');
+        androidBtn.classList.add('calc-contact-btn');
+        iosBtn.classList.remove('calc-contact-btn');
+        iosBtn.classList.add('calc-contact-btn-alt');
+      } else {
+        p.textContent =
+          'Скачайте визитку в формате .vcf — файл можно открыть на большинстве телефонов (iOS и Android), чтобы добавить контакт.';
+      }
+    })();
+    </script>
+
+  </main>
+</body>
+</html>
