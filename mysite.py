@@ -48,6 +48,16 @@ def post(name):
     return render_template('post.html', post=post)
 
 
+@app.route('/portfolio/<name>/')
+def card(name):
+    """
+    Карточка партнёра (портфолио).
+    """
+    path = '{}/{}'.format(PORT_DIR, name)
+    card_obj = flatpages.get_or_404(path)
+    return render_template('card.html', card=card_obj)
+
+
 @app.route("/vcard")
 def vcard():
     """
@@ -73,7 +83,6 @@ END:VCARD
             "Content-Disposition": "attachment; filename=advocate34.vcf"
         }
     )
-
 
 @app.route('/calculator/alimony/')
 def calculator_alimony():
