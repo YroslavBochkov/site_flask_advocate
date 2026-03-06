@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Визитка адвоката — сохранить контакт{% endblock %}
+{% block description %}Сохраните контакт адвокатского кабинета в адресную книгу: телефоны, адрес, e-mail, сайт.{% endblock %}
+
+{% block content %}
+<style>
+body::before {
+  background: #040404 url("{{ url_for('static', filename='img/bg.jpg') }}");
+}
+</style>
+
+<div id="portfolio-details" class="portfolio-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2 class="portfolio-title">Визитка адвокатского кабинета</h2>
+        <p>
+          Здесь вы можете сохранить контакт адвокатского кабинета в адресную книгу телефона.
+        </p>
+
+        <div class="calc-card">
+          <h4>Сохранить контакт</h4>
+          <p>Рекомендуемый способ:</p>
+          <ul>
+            <li>Нажмите кнопку «Скачать визитку (.vcf)» ниже.</li>
+            <li>Откройте скачанный файл на вашем устройстве.</li>
+            <li>Телефон предложит создать новый контакт.</li>
+          </ul>
+          <p style="margin-top:12px;">
+            <a href="{{ url_for('static', filename='advocate34.vcf') }}" class="btn btn-sm calc-contact-btn">
+              Скачать визитку (.vcf)
+            </a>
+          </p>
+
+          <p style="margin-top:16px;">
+            Если вы открыли эту страницу на iPhone и видите только текст визитки,
+            вы можете:
+          </p>
+          <ul>
+            <li>Нажать «Поделиться» (кнопка со стрелкой),</li>
+            <li>выбрать «Скопировать» или отправить текст себе в заметки,</li>
+            <li>или отправить ссылку на эту страницу/файл .vcf себе в Telegram/WhatsApp и открыть уже оттуда.</li>
+          </ul>
+        </div>
+
+        <div class="calc-card" style="margin-top:20px;">
+          <h4>Данные контакта</h4>
+          <pre style="white-space:pre-wrap; color:#fff; background:rgba(255,255,255,0.05); padding:12px; border-radius:6px; font-size:14px;">
+BEGIN:VCARD
+VERSION:3.0
+N:Садиков;Алексей;Анатольевич;;
+FN:Адвокатский кабинет Садикова А.А.
+ORG:Адвокатский кабинет Садикова А.А.;
+TITLE:Адвокат
+TEL;TYPE=CELL,WORK;LABEL=Алексей:+79178345017
+TEL;TYPE=CELL,WORK;LABEL=Ярослав:+79177207612
+EMAIL;TYPE=INTERNET,WORK:advocate34@mail.ru
+ADR;TYPE=WORK:;;пр. Ленина 34, оф. 15;Волжский;Волгоградская область;;Россия
+URL:https://advocate34.ru/
+END:VCARD
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

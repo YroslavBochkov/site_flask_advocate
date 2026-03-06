@@ -1,5 +1,5 @@
 import sys, json
-from flask import Flask, render_template, jsonify, Response, redirect, url_for
+from flask import Flask, render_template, jsonify, Response
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -51,10 +51,10 @@ def post(name):
 @app.route("/vcard")
 def vcard():
     """
-    Редирект на статический файл vCard.
-    Удобно для статического хостинга (Netlify, Frozen-Flask).
+    Страница с визиткой и ссылкой на скачивание .vcf.
+    Работает и на статическом хостинге (Frozen-Flask + Netlify).
     """
-    return redirect(url_for('static', filename='advocate34.vcf'), code=302)
+    return render_template("vcard.html")
 
 
 @app.route('/portfolio/<name>/')
