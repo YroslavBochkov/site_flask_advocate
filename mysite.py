@@ -1,5 +1,5 @@
 import sys, json
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, Response
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -46,6 +46,33 @@ def post(name):
     path = '{}/{}'.format(POST_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
+
+@app.route("/vcard")
+def vcard():
+    """
+    Отдаём vCard с контактами адвоката.
+    Открывается как визитка и сохраняется в адресную книгу.
+    """
+    vcard_text = """BEGIN:VCARD
+VERSION:3.0
+N:Садиков;Алексей;Анатольевич;;
+FN:Адвокатский кабинет Садикова А.А.
+ORG:Адвокатский кабинет Садикова А.А.;
+TITLE:Адвокат
+TEL;TYPE=CELL,WORK;LABEL=Алексей:+79178345017
+TEL;TYPE=CELL,WORK;LABEL=Ярослав:+79177207612
+EMAIL;TYPE=INTERNET,WORK:advocate34@mail.ru
+ADR;TYPE=WORK:;;пр. Ленина 34, оф. 15;Волжский;Волгоградская область;;Россия
+URL:https://advocate34.ru/
+END:VCARD
+"""
+    return Response(
+        vcard_text,
+        mimetype="text/vcard",
+        headers={
+            "Content-Disposition": "attachment; filename=advocate34.vcf"
+        }
+    )
 
 
 @app.route('/portfolio/<name>/')

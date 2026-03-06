@@ -19,6 +19,30 @@
           </div>
         </div>
 
+        <!-- QR-код визитки -->
+        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-id-card"></i>
+            <h3>Сохранить визитку</h3>
+            <p>
+              Отсканируйте QR-код камерой телефона, чтобы добавить контакт
+              адвоката в адресную книгу.
+            </p>
+            <div style="margin-top:10px; text-align:center;">
+              <a href="{{ url_for('vcard') }}">
+                <img
+                  src="{{ url_for('static', filename='img/vcard_qr.png') }}"
+                  alt="QR-код визитки адвоката"
+                  style="max-width:220px; width:100%; height:auto;"
+                >
+              </a>
+              <p style="margin-top:8px; font-size:13px; color:#ccc;">
+                Нажмите на QR-код, чтобы скачать визитку напрямую (файл vCard).
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-phone"></i>
