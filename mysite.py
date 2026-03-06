@@ -57,11 +57,31 @@ def vcard():
     return render_template("vcard.html")
 
 
-@app.route('/portfolio/<name>/')
-def card(name):
-    path = '{}/{}'.format(PORT_DIR, name)
-    card = flatpages.get_or_404(path)
-    return render_template('card.html', card=card)
+@app.route("/vcard")
+def vcard():
+    """
+    Отдаём vCard как файл, чтобы телефон сразу предлагал сохранить контакт.
+    """
+    vcard_text = """BEGIN:VCARD
+VERSION:3.0
+N:Садиков;Алексей;Анатольевич;;
+FN:Адвокатский кабинет Садикова А.А.
+ORG:Адвокатский кабинет Садикова А.А.;
+TITLE:Адвокат
+TEL;TYPE=CELL,WORK;LABEL=Алексей:+79178345017
+TEL;TYPE=CELL,WORK;LABEL=Ярослав:+79177207612
+EMAIL;TYPE=INTERNET,WORK:advocate34@mail.ru
+ADR;TYPE=WORK:;;пр. Ленина 34, оф. 15;Волжский;Волгоградская область;;Россия
+URL:https://advocate34.ru/
+END:VCARD
+"""
+    return Response(
+        vcard_text,
+        mimetype="text/vcard",
+        headers={
+            "Content-Disposition": "attachment; filename=advocate34.vcf"
+        }
+    )
 
 
 @app.route('/calculator/alimony/')
