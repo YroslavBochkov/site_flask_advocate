@@ -51,15 +51,6 @@ def post(name):
 @app.route("/vcard")
 def vcard():
     """
-    Страница с визиткой и ссылкой на скачивание .vcf.
-    Работает и на статическом хостинге (Frozen-Flask + Netlify).
-    """
-    return render_template("vcard.html")
-
-
-@app.route("/vcard")
-def vcard():
-    """
     Отдаём vCard как файл, чтобы телефон сразу предлагал сохранить контакт.
     """
     vcard_text = """BEGIN:VCARD
