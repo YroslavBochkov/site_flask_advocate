@@ -61,28 +61,10 @@ def card(name):
 @app.route("/vcard")
 def vcard():
     """
-    Отдаём vCard как файл, чтобы телефон сразу предлагал сохранить контакт.
+    Страница для перехода по QR: кнопка скачивания .vcf и короткая инструкция.
     """
-    vcard_text = """BEGIN:VCARD
-VERSION:3.0
-N:Садиков;Алексей;Анатольевич;;
-FN:Адвокатский кабинет Садикова А.А.
-ORG:Адвокатский кабинет Садикова А.А.;
-TITLE:Адвокат
-TEL;TYPE=CELL,WORK;LABEL=Алексей:+79178345017
-TEL;TYPE=CELL,WORK;LABEL=Ярослав:+79177207612
-EMAIL;TYPE=INTERNET,WORK:advocate34@mail.ru
-ADR;TYPE=WORK:;;пр. Ленина 34, оф. 15;Волжский;Волгоградская область;;Россия
-URL:https://advocate34.ru/
-END:VCARD
-"""
-    return Response(
-        vcard_text,
-        mimetype="text/vcard",
-        headers={
-            "Content-Disposition": "attachment; filename=advocate34.vcf"
-        }
-    )
+    return render_template("vcard.html")
+
 
 @app.route('/calculator/alimony/')
 def calculator_alimony():
