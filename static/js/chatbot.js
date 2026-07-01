@@ -160,9 +160,11 @@ function renderChatbotStep(stepIdx) {
       }
       chatbotForm[step.input] = value;
 
-      // Если это последний шаг формы (например, телефон), отправляем заявку через Netlify Function или Flask
+      // Если это последний шаг формы (например, телефон), раньше мы отправляли заявку через Netlify.
+      // Сейчас отправка отключена: данные никуда не уходят, просто показываем следующий шаг.
       if (step.input === 'phone') {
-        // ВСЕГДА используем Netlify Functions endpoint!
+        /*
+        // Старый код отправки на Netlify Functions (оставлен на будущее):
         let bookingEndpoint = '/.netlify/functions/booking';
         console.log("Отправка формы:", chatbotForm, "на", bookingEndpoint);
         fetch(bookingEndpoint, {
@@ -170,9 +172,10 @@ function renderChatbotStep(stepIdx) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(chatbotForm)
         });
+        chatbotForm = {};
+        */
         renderChatbotStep(stepIdx + 1);
         chatbotState = stepIdx + 1;
-        chatbotForm = {};
       } else {
         renderChatbotStep(stepIdx + 1);
         chatbotState = stepIdx + 1;

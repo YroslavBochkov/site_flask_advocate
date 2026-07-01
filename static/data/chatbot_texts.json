@@ -8,8 +8,7 @@
       { "label": "Налоговое право", "next": 4 },
       { "label": "Уголовное право", "next": 5 },
       { "label": "IT/Бизнес", "next": 6 },
-      { "label": "Другое", "next": 7 },
-      { "label": "Записаться на онлайн-консультацию (Zoom)", "next": 8 }
+      { "label": "Другое", "next": 7 }
     ]
   },
   {
@@ -79,7 +78,6 @@
       { "label": "Позвонить", "url": "tel:+79178345017" },
       { "label": "WhatsApp", "url": "https://wa.me/79177207612" },
       { "label": "Telegram", "url": "https://t.me/advocate34S" },
-      { "label": "Записаться на онлайн-консультацию (Zoom)", "next": 8 },
       { "label": "Назад", "next": 0 }
     ]
   },
