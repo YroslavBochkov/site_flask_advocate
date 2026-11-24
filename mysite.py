@@ -1,4 +1,4 @@
-import sys, json
+import sys, json, os
 from flask import Flask, render_template, jsonify, Response
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
@@ -151,7 +151,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
-        import os
-
-        port = int(os.environ.get("PORT", "8080"))
+        port = int(os.environ["PORT"])
         app.run(host="0.0.0.0", port=port, debug=DEBUG)
